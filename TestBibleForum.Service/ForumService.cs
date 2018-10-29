@@ -39,7 +39,7 @@ namespace TestBibleForum.Service
 
         public Forum GetById(int id)
         {
-            
+            throw new NotImplementedException();
         }
 
         public Task UpdateForumDescription(int forumId, string newDescription)
