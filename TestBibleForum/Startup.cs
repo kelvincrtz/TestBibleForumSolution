@@ -12,6 +12,7 @@ using TestBibleForum.Data;
 using TestBibleForum.Models;
 using TestBibleForum.Services;
 using TestBibleForum.Data.Models;
+using TestBibleForum.Service;
 
 namespace TestBibleForum
 {
@@ -36,6 +37,8 @@ namespace TestBibleForum
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddScoped<IForum, ForumService>();
 
             services.AddMvc();
         }
