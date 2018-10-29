@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TestBibleForum.Data;
+using TestBibleForum.Models.Forum;
 
 namespace TestBibleForum.Controllers
 {
@@ -18,7 +19,20 @@ namespace TestBibleForum.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var forums = _forumService.GetAll()
+                .Select(forum => new ForumListingModel
+                {
+                    Id = forum.Id,
+                    Title = forum.Title,
+                    Description = forum.Description
+                });
+
+            var model = new ForumIndexModel
+            {
+                ForumIndex = forums
+            };
+
+            return View(model);
         }
     }
 }
